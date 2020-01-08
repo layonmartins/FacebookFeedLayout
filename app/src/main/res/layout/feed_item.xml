@@ -80,6 +80,78 @@
         app:layout_constraintDimensionRatio="16:9"
         android:scaleType="centerCrop"
         tools:srcCompat="@tools:sample/backgrounds/scenic"/>
+    
+    <LinearLayout
+        android:id="@+id/post_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/lightGray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image_view_post">
 
+        <TextView
+            android:id="@+id/text_view_post_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            tools:text="BLOG.GOOGLE.COM"/>
+
+        <TextView
+            android:id="@+id/text_view_post_subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            tools:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry."/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button_like"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="null"
+        android:text="@string/like"
+        android:drawableStart="@drawable/ic_like"
+        android:drawablePadding="8dp"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintEnd_toStartOf="@id/button_comment"
+        app:layout_constraintTop_toBottomOf="@id/post_container"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <Button
+        android:id="@+id/button_comment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="null"
+        android:text="@string/comment"
+        android:drawableStart="@drawable/ic_comment"
+        android:drawablePadding="8dp"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintEnd_toStartOf="@id/button_share"
+        app:layout_constraintStart_toEndOf="@id/button_like"
+        app:layout_constraintTop_toBottomOf="@id/post_container"/>
+
+    <Button
+        android:id="@+id/button_share"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="null"
+        android:text="@string/share"
+        android:drawableStart="@drawable/ic_share"
+        android:drawablePadding="8dp"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintTop_toBottomOf="@id/post_container"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/button_comment"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
