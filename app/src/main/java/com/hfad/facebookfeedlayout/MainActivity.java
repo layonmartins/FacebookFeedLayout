@@ -2,6 +2,8 @@ package com.hfad.facebookfeedlayout;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -26,9 +28,38 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView rv = findViewById(R.id.recycler_view);
         rv.setLayoutManager(new LinearLayoutManager(this));
         postAdapter = new PostAdapter();
+
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(rv.getContext(),
+                DividerItemDecoration.VERTICAL);
+        dividerItemDecoration.setDrawable(ContextCompat.getDrawable(this, R.drawable.divider));
+        rv.addItemDecoration(dividerItemDecoration);
+
         rv.setAdapter(postAdapter);
 
+        List<Post> posts = new ArrayList<>();
 
+        Post post1 = new Post();
+        post1.setImageViewUser(R.drawable.elon);
+        post1.setImageViewPost(R.drawable.cybertruck);
+        post1.setTextViewUserName("Ellon Muskq");
+        post1.setTextViewTime("2 min");
+        post1.setTextViewContent("Cybertruck is built with an exterior shell made for ultimate durability and passenger protection. Starting with a nearly impenetrable exoskeleton, every component is designed for superior strength and endurance, from Ultra-Hard 30X Cold-Rolled stainless-steel structural skin to Tesla armor glass.");
+        post1.setTextViewTitle("https://www.tesla.com/cybertruck".toUpperCase());
+        post1.setTextViewSubTitle("The Tesla Cybertruck is an all-electric battery-powered light commercial vehicle in development by Tesla, Inc. Three models have been announced, with range estimates of 250–500 miles (400–800 km) and an estimated 0–60 mph time of 2.9–6.5 seconds, depending on the model.");
+        posts.add(post1);
+
+        Post post2 = new Post();
+        post2.setImageViewUser(R.drawable.viuva);
+        post2.setImageViewPost(R.drawable.viuvanegra);
+        post2.setTextViewUserName("Black Widow");
+        post2.setTextViewTime("4 min");
+        post2.setTextViewContent("Black Widow is an upcoming American superhero film based on the Marvel Comics character of the same name. Produced by Marvel Studios and distributed by Walt Disney Studios Motion Pictures, it is intended to be the twenty-fourth film in the Marvel Cinematic Universe (MCU).");
+
+        posts.add(post2);
+        posts.add(post1);
+
+        postAdapter.setPosts(posts);
+        postAdapter.notifyDataSetChanged();
     }
 
     private static class PostViewHolder extends RecyclerView.ViewHolder {
@@ -60,6 +91,8 @@ public class MainActivity extends AppCompatActivity {
             imageViewPost.setImageResource(post.getImageViewPost());
             textViewTitle.setText(post.getTextViewTitle());
             textViewSubTitle.setText(post.getTextViewSubTitle());
+
+
         }
     }
 
@@ -85,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
             return posts.size();
         }
 
-        public void setPosts(List<Post> post){
+        public void setPosts(List<Post> posts){
             this.posts = posts;
         }
     }
