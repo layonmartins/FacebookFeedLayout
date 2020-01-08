@@ -2,6 +2,8 @@ package com.hfad.facebookfeedlayout;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -54,9 +56,25 @@ public class MainActivity extends AppCompatActivity {
         post2.setTextViewUserName("Black Widow");
         post2.setTextViewTime("4 min");
         post2.setTextViewContent("Black Widow is an upcoming American superhero film based on the Marvel Comics character of the same name. Produced by Marvel Studios and distributed by Walt Disney Studios Motion Pictures, it is intended to be the twenty-fourth film in the Marvel Cinematic Universe (MCU).");
-
         posts.add(post2);
-        posts.add(post1);
+
+        Post post3 = new Post();
+        post3.setImageViewUser(R.drawable.xaiomi_icon);
+        post3.setImageViewPost(R.drawable.xaiomi);
+        post3.setTextViewUserName("Xaiomi");
+        post3.setTextViewTime("6 min");
+        post3.setTextViewContent("We may wonder what the phone will look like in the future as we are surrounded by more extensive information. Perhaps in the future, the entire mobile phone will look like a display. The display of Mi MIX Alpha extends from front to back. When the screen lights up, it's like the universe: no end and no boundaries, but a stunningly futuristic feeling.");
+        post3.setTextViewTitle("https://www.mi.com/global/mi-mix-alpha".toUpperCase());
+        post3.setTextViewSubTitle("Mi MIX Alpha is a futuristic phone that shows the many avenues for Xiaomi to explore during the 5G era Not all possibilities can be explored. We want to enable more possibilities for the future instead.");
+        posts.add(post3);
+
+        Post post4 = new Post();
+        post4.setImageViewUser(R.drawable.thor_icon);
+        post4.setImageViewPost(R.drawable.thor_gordo);
+        post4.setTextViewUserName("Thor");
+        post4.setTextViewTime("8 min");
+        post4.setTextViewContent("The success story that is the Marvel Cinematic Universe is, in no small part, the success story of Christopher Markus and Stephen McFeely. The screenwriting duo has penned 6 of the 22 installments in the ultrafranchise, including the 3 films that required the most juggling of ensembles: Captain America: Civil War, Avengers: Infinity War, and this year’s Avengers: Endgame.");
+        posts.add(post4);
 
         postAdapter.setPosts(posts);
         postAdapter.notifyDataSetChanged();
@@ -92,7 +110,19 @@ public class MainActivity extends AppCompatActivity {
             textViewTitle.setText(post.getTextViewTitle());
             textViewSubTitle.setText(post.getTextViewSubTitle());
 
-
+            if (post.getTextViewTitle() == null) {
+                itemView.findViewById(R.id.post_container).setVisibility(View.GONE);
+                ConstraintSet constraintSet = new ConstraintSet();
+                constraintSet.clone((ConstraintLayout) itemView);
+                constraintSet.setDimensionRatio(R.id.image_view_post, "1:1");
+                constraintSet.applyTo((ConstraintLayout) itemView);
+            } else {
+                itemView.findViewById(R.id.post_container).setVisibility(View.VISIBLE);
+                ConstraintSet constraintSet = new ConstraintSet();
+                constraintSet.clone((ConstraintLayout) itemView);
+                constraintSet.setDimensionRatio(R.id.image_view_post, "16:9");
+                constraintSet.applyTo((ConstraintLayout) itemView);
+            }
         }
     }
 
