@@ -15,6 +15,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.material.tabs.TabLayout;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +28,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        TabLayout tabLayout = findViewById(R.id.tab_nav);
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.feed));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.request));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.users));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.watch));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.notify));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.more));
+
+
 
         RecyclerView rv = findViewById(R.id.recycler_view);
         rv.setLayoutManager(new LinearLayoutManager(this));
